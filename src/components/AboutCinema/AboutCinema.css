@@ -1,0 +1,17 @@
+.about-cinema::after{
+  content: "";
+  position: absolute;
+  width: 70px;
+  border-bottom: 3px orangered solid;
+  bottom: -12px;
+  border-radius: 4px;
+  left: 0;
+}
+
+.about-cinema{
+  /* border-bottom: 3px orangered solid;
+  width: 160px;
+  border-radius: 4px; */
+
+  position: relative;
+}

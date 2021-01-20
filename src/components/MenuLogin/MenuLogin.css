@@ -1,0 +1,10 @@
+.text-de{
+  text-decoration: none;
+  color: black;
+  font-weight: 600;
+}
+.text-de:hover{
+  color: rgb(242, 108, 57);
+  text-decoration: none;
+
+}

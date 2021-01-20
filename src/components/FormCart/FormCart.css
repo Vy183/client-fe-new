@@ -1,0 +1,14 @@
+.btn-link.button-remove {
+  font-weight: 400;
+  color: #000000;
+  text-decoration: none;
+}
+
+.btn-link.button-remove:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+.btn.button-remove:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgb(255 255 255 / 0%);
+}

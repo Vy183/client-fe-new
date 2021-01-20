@@ -1,0 +1,25 @@
+.list_footer {
+    padding: 1rem;
+}
+
+.list_item {
+    list-style-type: "";
+    color: rgba(255, 255, 255, 0.7);
+    margin: 6px 0;
+}
+
+.list_footer a:hover,
+.list_footer a:active {
+    text-decoration: none;
+}
+
+.list_footer a:hover li,
+.list_footer a:active li {
+    color: #f26c39;
+}
+
+.footer-title {
+    /* color: rgba(255, 255, 255, 0.7); */
+    /* margin-top: 15px; */
+    border-left: 3px solid #f26b38;
+}

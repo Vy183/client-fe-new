@@ -1,0 +1,24 @@
+.title_review {
+  display: flex;
+  position: relative;
+  margin-bottom: 36px;
+}
+
+.title_review::after {
+  content: "";
+  position: absolute;
+  width: 60px;
+  border-bottom: 3px orangered solid;
+  bottom: -12px;
+  border-radius: 4px;
+}
+
+.img-review {
+  width: 170px;
+  height: 110px;
+  margin-top: 5px;
+}
+
+.contai {
+  height: 200px;
+}

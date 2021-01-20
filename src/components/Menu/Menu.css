@@ -1,0 +1,12 @@
+.navbar-menu a,
+.navbar-menu a:hover {
+  text-decoration: none;
+  color: white;
+  font-weight: 400;
+}
+
+.navbar-menu a:active,
+.navbar-menu a.active {
+  color: orange;
+}
+

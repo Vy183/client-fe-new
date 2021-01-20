@@ -1,0 +1,44 @@
+.list_info li {
+  list-style-type: none;
+  margin: 5px 0px;
+}
+.list_info li span {
+  font-weight: 600;
+}
+.list_info li span:hover {
+  color: orangered;
+  cursor: pointer;
+  font-weight: 600;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0yLjUgMEwxIDEuNSAzLjUgNCAxIDYuNSAyLjUgOGw0LTQtNC00eiIgZmlsbD0iY3VycmVudENvbG9yIi8+PC9zdmc+) !important;
+}
+
+ol.breadcrumb {
+  background-color: #fff;
+}
+
+.breadcrumb a {
+  color: #aaa;
+}
+
+.breadcrumb a:hover {
+  color: #ea5a14;
+  text-decoration: none;
+}
+.border-bt{
+  border-bottom: orangered solid 2px;
+}
+
+.modal-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 640px;
+  pointer-events: auto;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.3rem;
+  outline: 0;
+}
