@@ -25,7 +25,7 @@ export default class Profile extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:4000/my-profile", {
+      .get(process.env.REACT_APP_BE_URL + "/my-profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -72,7 +72,7 @@ export default class Profile extends Component {
                 // onChange={this.changeInputHandler}
               />
 
-              <Link to={`/edit-trang-ca-nhan`}>
+              <Link to={`/edit-trang-ca-nhan`} className='mt-2'>
                 <Button variant="contained" size="small" color="secondary">
                   Edit
                 </Button>

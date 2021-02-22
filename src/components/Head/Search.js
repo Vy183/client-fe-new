@@ -46,7 +46,7 @@ export default class Search extends Component {
     // tự làm
 
     axios
-      .get(`http://localhost:4000/search?name=${name}`) //viết cứng thế này thì nó tìm mỗi 1 phim là đúng rồi
+      .get(process.env.REACT_APP_BE_URL + `/search?name=${name}`) //viết cứng thế này thì nó tìm mỗi 1 phim là đúng rồi
       .then((res) => {
         console.log(res.data);
         this.setState({ searchFilms: res.data });

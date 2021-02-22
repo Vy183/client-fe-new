@@ -27,7 +27,7 @@ function ControlledTabs() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:4000/client-page/")
+      .get(process.env.REACT_APP_BE_URL + "/client-page/")
       .then((res) => {
         console.log(res.data);
         setGetFilm(res.data.films);

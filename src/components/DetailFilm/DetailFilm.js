@@ -23,7 +23,7 @@ import data from "../../assest/dummydata/data";
 import "./DetailFilm.css";
 
 import phim1 from "../../assest/img/sc.jpg";
-import phim2 from '../../assest/img/sc2.jpg';
+import phim2 from "../../assest/img/sc2.jpg";
 import CommentFilm from "../CommentFilm/CommentFilm";
 
 class DetailFilm extends Component {
@@ -53,7 +53,7 @@ class DetailFilm extends Component {
 
     const { idPhim } = this.props.match.params;
     axios
-      .get(`http://localhost:4000/client-page/get-films-id/${idPhim}`, config)
+      .get(process.env.REACT_APP_BE_URL + `/client-page/get-films-id/${idPhim}`, config)
       .then((res) => {
         console.log(res.data);
         // this.setState({ dataPhim: res.data });
@@ -190,15 +190,15 @@ class DetailFilm extends Component {
                               show={this.state.show}
                               onHide={this.handleClose}
                               animation={false}
+                              size="lg"
                             >
-                              <Modal.Body>
+                              <Modal.Body style={{ textAlign: "center" }}>
                                 <iframe
-                                  width="460"
-                                  height="315"
-                                  src="https://www.youtube.com/embed/uQWySyw8aC0"
-                                  frameborder="0"
+                                  width="720"
+                                  height="600"
+                                  src={this.state.dataPhim.urlFilm}
                                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                  allowfullscreen
+                                  allowFullScreen
                                 ></iframe>
                               </Modal.Body>
                             </Modal>
@@ -242,12 +242,20 @@ class DetailFilm extends Component {
                 </Col>
                 <Col md={4}>
                   <h3 className="border-bt">Phim Đang Chiếu</h3>
-                  <div className='mt-4'>
-                    <img src={phim1} alt="" style={{width: '396px', height: '264px'}} />
+                  <div className="mt-4">
+                    <img
+                      src={phim1}
+                      alt=""
+                      style={{ width: "396px", height: "264px" }}
+                    />
                     <h4>THE CON-HEARTIST</h4>
                   </div>
-                  <div className='mt-4'>
-                    <img src={phim2} alt="" style={{width: '396px', height: '264px'}} />
+                  <div className="mt-4">
+                    <img
+                      src={phim2}
+                      alt=""
+                      style={{ width: "396px", height: "264px" }}
+                    />
                     <h4>CAPTAIN SABERTOOTH AND THE MAGIC DIAMOND</h4>
                   </div>
                 </Col>
@@ -264,7 +272,7 @@ class DetailFilm extends Component {
           Quay lại trang trước
         </Button>
 
-        <CommentFilm />
+        <CommentFilm userSend={this.props.user}/>
       </Container>
     );
   }

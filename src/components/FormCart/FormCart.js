@@ -26,7 +26,7 @@ export default class FormCart extends Component {
     if (token) {
       axios
         .post(
-          "http://localhost:4000/client-page/purchase",
+          process.env.REACT_APP_BE_URL + "/client-page/purchase",
           { filmsList },
           {
             headers: { Authorization: `Bearer ${token}` },
@@ -54,24 +54,24 @@ export default class FormCart extends Component {
     let soDu = this.props.balance - totalPrice;
     return (
       <Container className="my-2">
-        <Row>
-          <Col md={7}>
-            {this.props.cart.map((item_phim) => {
-              return (
-                <ItemCart
-                  item_info={item_phim}
-                  remove_Item={this.props.removeCart}
-                  // save_Item={this.props.saveCart}
-                />
-              );
-            })}
-          </Col>
+        {this.props.cart.length ? (
+          <Row>
+            <Col md={7}>
+              {this.props.cart.map((item_phim) => {
+                return (
+                  <ItemCart
+                    item_info={item_phim}
+                    remove_Item={this.props.removeCart}
+                    // save_Item={this.props.saveCart}
+                  />
+                );
+              })}
+            </Col>
 
-          <Col
-            md={5}
-            style={{ background: "rgb(214 202 202 / 16%)", opacity: "0.95" }}
-          >
-            {this.props.cart.length != 0 ? (
+            <Col
+              md={5}
+              style={{ background: "rgb(214 202 202 / 16%)", opacity: "0.95" }}
+            >
               <div className="my-3" style={{ marginLeft: "" }}>
                 <div>Tổng tiền:</div>
                 <h4>{totalPrice.toLocaleString()} VNĐ</h4>
@@ -92,30 +92,30 @@ export default class FormCart extends Component {
                   Thanh Toán
                 </Button>
               </div>
-            ) : (
-              <div className="" style={{ textAlign: "center" }}>
-                <img
-                  src={cart}
-                  alt=""
-                  style={{
-                    width: "300px",
-                    height: "300px",
-                    borderRadius: "50%",
-                  }}
-                />
-                {/* <ArrowBackIcon className="mr-4 mt-2" /> */}
-                <h3>Please Choose Your Film</h3>
-                <Link to="/">
-                  <Button variant="info">
-                    {" "}
-                    <ArrowBackIcon className="mr-2" />
-                    Go back Home
-                  </Button>
-                </Link>
-              </div>
-            )}
-          </Col>
-        </Row>
+            </Col>
+          </Row>
+        ) : (
+          <div className="" style={{ textAlign: "center" }}>
+            <img
+              src={cart}
+              alt=""
+              style={{
+                width: "300px",
+                height: "300px",
+                borderRadius: "50%",
+              }}
+            />
+            {/* <ArrowBackIcon className="mr-4 mt-2" /> */}
+            <h3>Please Choose Your Film</h3>
+            <Link to="/">
+              <Button variant="info">
+                {" "}
+                <ArrowBackIcon className="mr-2" />
+                Go back Home
+              </Button>
+            </Link>
+          </div>
+        )}
       </Container>
     );
   }

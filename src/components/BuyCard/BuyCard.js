@@ -67,7 +67,7 @@ const BuyCard = (props) => {
     };
 
     axios
-      .post("http://localhost:4000/cash", sendData, config)
+      .post(process.env.REACT_APP_BE_URL + "/cash", sendData, config)
       .then((res) => {
         console.log(res.data);
         setSuccess(res.data.message);
@@ -86,7 +86,7 @@ const BuyCard = (props) => {
     setLoadingFetchCash(true);
     setRes(null);
     axios
-      .get("http://localhost:4000/cash", config)
+      .get(process.env.REACT_APP_BE_URL + "/cash", config)
       .then((res) => {
         setRes(res.data);
       })

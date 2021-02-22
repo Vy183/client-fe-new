@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     margin: "1rem auto",
   },
   media: {
-    height: 140,
+    height: 225,
+    width: 250,
   },
   link: {
     textDecoration: "none",

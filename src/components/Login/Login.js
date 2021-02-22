@@ -36,7 +36,7 @@ class Login extends Component {
     this.setState({ error: null });
 
     axios
-      .post("http://localhost:4000/login", dataUser)
+      .post(process.env.REACT_APP_BE_URL + "/login", dataUser)
       .then((res) => {
         // console.log(res.data);
         const { name, email, token } = res.data;

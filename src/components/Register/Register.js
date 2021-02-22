@@ -56,7 +56,7 @@ class Register extends Component {
     this.setState({ error: null, success: null });
 
     axios
-      .post("http://localhost:4000/signup", userData)
+      .post(process.env.REACT_APP_BE_URL + "/signup", userData)
       .then((res) => {
         // console.log(res.data);
         const { name, email } = res.data;

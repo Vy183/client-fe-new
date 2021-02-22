@@ -14,7 +14,7 @@ export default class Order extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:4000/orders", {
+      .get(process.env.REACT_APP_BE_URL + "/orders", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {

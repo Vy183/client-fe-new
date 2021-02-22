@@ -10,7 +10,17 @@ export default class Profile extends Component {
     name: "",
     phone_number: "",
     date_of_birth: "",
-    gender: "",
+    gender: [],
+    renderGender: [
+      {
+        value: "male",
+        label: "Male",
+      },
+      {
+        value: "female",
+        label: "Female",
+      },
+    ],
     balance: "",
     email: "",
     _id: "",
@@ -19,7 +29,7 @@ export default class Profile extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     axios
-      .get("http://localhost:4000/my-profile", {
+      .get(process.env.REACT_APP_BE_URL + "/my-profile", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -37,9 +47,8 @@ export default class Profile extends Component {
     });
     console.log(event.target.value);
   };
-  
-  EditProfileHandler = (event) => {
 
+  EditProfileHandler = (event) => {
     const userdata = {
       name: this.state.name,
       email: this.state.email,
@@ -48,7 +57,6 @@ export default class Profile extends Component {
       gender: this.state.gender,
       balance: this.state.balance,
       _id: this.state._id,
-      
     };
 
     console.log(userdata);
@@ -58,7 +66,10 @@ export default class Profile extends Component {
     console.log(id_user);
 
     axios
-      .put("http://localhost:4000/edit-my-profile/" + id_user, userdata)
+      .put(
+        process.env.REACT_APP_BE_URL + "/edit-my-profile/" + id_user,
+        userdata
+      )
 
       .then((res) => {
         console.log(res.data);
@@ -70,10 +81,9 @@ export default class Profile extends Component {
   };
 
   render() {
-   
     return (
       <Container>
-        <h1 style={{ margin: "0 0 20px 36%" }}>Profile Page</h1>
+        <h1 style={{ margin: "0 0 20px 36%" }}>My Profile Page</h1>
         <FormControl style={{ margin: "0 0 20px 23%", width: "50%" }}>
           <TextField
             id="name"
@@ -82,6 +92,7 @@ export default class Profile extends Component {
             variant="outlined"
             value={this.state.name}
             onChange={this.changeInputHandler}
+            className="mb-3"
           />
           <TextField
             id="email"
@@ -90,6 +101,7 @@ export default class Profile extends Component {
             variant="outlined"
             value={this.state.email}
             onChange={this.changeInputHandler}
+            className="mb-3"
           />
           <TextField
             id="phone_number"
@@ -98,6 +110,7 @@ export default class Profile extends Component {
             variant="outlined"
             value={this.state.phone_number}
             onChange={this.changeInputHandler}
+            className="mb-3"
           />
           <TextField
             id="date_of_birth"
@@ -106,28 +119,39 @@ export default class Profile extends Component {
             variant="outlined"
             value={this.state.date_of_birth}
             onChange={this.changeInputHandler}
+            className="mb-3"
           />
           <TextField
-            id="gender"
             name="gender"
-            label="giới tính"
-            variant="outlined"
+            id="gender"
+            select
+            label="gender"
             value={this.state.gender}
             onChange={this.changeInputHandler}
-          />
+            variant="outlined"
+            className="mb-3"
+          >
+            {this.state.renderGender.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </TextField>
           <TextField
             id="balance"
             name="balance"
             label="số dư tài khoản"
             variant="outlined"
-            value={this.state.balance}
+            value={this.state.balance.toLocaleString()}
+            className="mb-3"
           />
-          <Grid item xs={12} md={6} lg={5} spacing={3}>
+          <Grid className="d-flex">
             <Button
               variant="contained"
-              style={{ background: "yellowgreen" }}
+              color="primary"
               startIcon={<EditIcon />}
               onClick={this.EditProfileHandler}
+              className="mr-2"
             >
               Cập nhật thông tin
             </Button>
@@ -135,7 +159,7 @@ export default class Profile extends Component {
             <Link to={`/trang-ca-nhan`}>
               <Button
                 variant="contained"
-                style={{ background: "coral" }}
+                color="secondary"
                 startIcon={<EditIcon />}
               >
                 Trở về
